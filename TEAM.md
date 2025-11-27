@@ -1,19 +1,14 @@
 # Team Information
 
-**Course:** _[fill your course code and name]_
+**Course:** _32806 - Autonomous Systems_
 
-**Semester:** Semester 2, 2020
+**Semester:** Semester 1, 2025
 
-**Instructor:** _[name of your instructor]_
+**Instructor:** _Javier Segovia-Aguas_
 
-**Team name:** _[replace this with team name in plan text]_
+**Team name:** _Dunking Pac-Man_
 
 **Team members:**
 
-* Student 1's Student number - Full Name - Student email - Student Github id
-* Student 2's Student number - Full Name - Student email - Student Github id
-* Student 3's Student number - Full Name - Student email - Student Github id
-
-Replace the lines above with the correct details of members. Delete or add lines as needed.
-
-Student numbers should just be the **numbers**.
+* u199325 - Ivan Hernandez Gomez - ivan.hernandez04@estudiant.upf.edu - Student Github id
+* u267652 - Darko Konstantinovikj - Student email - Student Github id

@@ -34,6 +34,9 @@ def create_team(first_index, second_index, is_red,
     any extra arguments, so you should make sure that the default
     behavior is what you want for the nightly contest.
     """
+
+    # eval(first) return the class object 'first'
+    # eval(first)(first_index) instantiates the 'first' class with first_index as parameter
     return [eval(first)(first_index), eval(second)(second_index)]
 
 
@@ -41,9 +44,25 @@ def create_team(first_index, second_index, is_red,
 # Agents #
 ##########
 
+
+class DunkingPacManAgent(CaptureAgent):
+    def __init__(self, index, time_for_computing=.1):
+        super().__init__(index, time_for_computing)
+        self.start = None 
+
+    def register_initial_state(self, game_state):
+        self.start = game_state.get_agent_position(self.index)
+        CaptureAgent.register_initial_state(self, game_state)
+
+    
+
+
+
 class ReflexCaptureAgent(CaptureAgent):
     """
     A base class for reflex agents that choose score-maximizing actions
+    - Normal gameplay: choose action(s) with maximal evaluation score.
+    - Few food left (≤2): pick the action that moves closest to the start position using maze distance.
     """
 
     def __init__(self, index, time_for_computing=.1):
@@ -58,37 +77,48 @@ class ReflexCaptureAgent(CaptureAgent):
         """
         Picks among the actions with the highest Q(s,a).
         """
+        # Get the set of legal action given the state and the agent index
         actions = game_state.get_legal_actions(self.index)
 
         # You can profile your evaluation time by uncommenting these lines
         # start = time.time()
+
+        # Evaluate all possible actions given the game state
         values = [self.evaluate(game_state, a) for a in actions]
+
         # print 'eval time for agent %d: %.4f' % (self.index, time.time() - start)
 
+        # Get the actions with the maximal evaluation value
         max_value = max(values)
         best_actions = [a for a, v in zip(actions, values) if v == max_value]
 
         food_left = len(self.get_food(game_state).as_list())
 
+        # Pick the action that moves closest to the start position
         if food_left <= 2:
             best_dist = 9999
             best_action = None
             for action in actions:
                 successor = self.get_successor(game_state, action)
                 pos2 = successor.get_agent_position(self.index)
+                # Get the manhattan distance between 
                 dist = self.get_maze_distance(self.start, pos2)
                 if dist < best_dist:
                     best_action = action
                     best_dist = dist
             return best_action
 
+        # Pick a random action from the maximal set
         return random.choice(best_actions)
 
     def get_successor(self, game_state, action):
         """
-        Finds the next successor which is a grid position (location tuple).
+        Finds the next successor which is a state.
         """
+        # Get the next game state after the action is taken
         successor = game_state.generate_successor(self.index, action)
+
+        # Get the location tuple of the agent and check if its a (discretisized) grid position
         pos = successor.get_agent_state(self.index).get_position()
         if pos != nearest_point(pos):
             # Only half a grid position was covered

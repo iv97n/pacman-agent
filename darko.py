@@ -473,7 +473,7 @@ class OffensiveAgent(ReflexCaptureAgent):
 
     # Avoid clustering with teammate: if too close, shift up/down if legal
     if self.team_mate_index is not None:
-      mate_state = game_state.get_agent_state(self.team_mate_`index)
+      mate_state = game_state.get_agent_state(self.team_mate_index)
       if mate_state and mate_state.get_position() is not None:
         mate_pos = mate_state.get_position()
         if self.get_maze_distance(patrol_point, mate_pos) <= 2:

@@ -1,13 +1,16 @@
 import random
+import sys
+import os
 from functools import partial
+
 
 import contest.util as util
 from contest.capture_agents import CaptureAgent
 from contest.game import Directions
 from contest.util import nearest_point
-from heuristics.search import a_star
-from heuristics.heuristics import basic_attack_heursitic, distance_to_closest_food, distance_to_own_side, distance_to_enemy_in_own_side
-from heuristics.goals import GetFoodGoal, GoBackGoal, ChaseAgentGoal, PatrolGoal
+from .heuristics.search import a_star
+from .heuristics.heuristics import basic_attack_heursitic, distance_to_closest_food, distance_to_own_side, distance_to_enemy_in_own_side
+from .heuristics.goals import GetFoodGoal, GoBackGoal, ChaseAgentGoal, PatrolGoal
 
 
 

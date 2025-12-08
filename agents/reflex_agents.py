@@ -1,12 +1,10 @@
 import random
-import util
-import os
-import json
+
 from capture_agents import CaptureAgent
 from game import Directions
+import util
 from util import nearest_point
-import time
-import math
+
 
 # Shared team coordination data
 team_patrol_assignments = {}
@@ -134,7 +132,7 @@ class ParticleFilter:
 # OFFENSIVE AGENT #
 ###################
 
-class OffensiveAgent(ReflexCaptureAgent):
+class ReflexOffensiveAgent(ReflexCaptureAgent):
   """
   A reflex agent that seeks food but avoids dead ends when ghosts are near.
   """
@@ -472,7 +470,7 @@ class OffensiveAgent(ReflexCaptureAgent):
 # DEFENSIVE AGENT #
 ###################
 
-class DefensiveAgent(ReflexCaptureAgent):
+class ReflexDefensiveAgent(ReflexCaptureAgent):
   
   def register_initial_state(self, game_state):
     ReflexCaptureAgent.register_initial_state(self, game_state)

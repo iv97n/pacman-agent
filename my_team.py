@@ -6,7 +6,8 @@
 # John DeNero (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
 # For more info, see http://inst.eecs.berkeley.edu/~cs188/sp09/pacman.html
 
-from heuristic_agents import Take3AndGoOffensiveAgent,Take3AndGoDefensiveAgent
+from agents.heuristic_agents import Take3AndGoOffensiveAgent,Take3AndGoDefensiveAgent
+from agents.reflex_agents import ReflexOffensiveAgent, ReflexDefensiveAgent
 
 
 #################

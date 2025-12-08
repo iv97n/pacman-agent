@@ -6,7 +6,7 @@
 # John DeNero (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
 # For more info, see http://inst.eecs.berkeley.edu/~cs188/sp09/pacman.html
 
-from agents.heuristic_agents import Take3AndGoOffensiveAgent,Take3AndGoDefensiveAgent
+from agents.heuristic_agents import Take3AndGoOffensiveAgent,Take3AndGoDefensiveAgent, CleverOffensiveAgent
 from agents.reflex_agents import ReflexOffensiveAgent, ReflexDefensiveAgent
 
 
@@ -30,8 +30,8 @@ def create_team(first_index, second_index, is_red,
     any extra arguments, so you should make sure that the default
     behavior is what you want for the nightly contest.
     """
-    second = 'Take3AndGoOffensiveAgent'
-    first = 'Take3AndGoDefensiveAgent'
+    first = 'CleverOffensiveAgent'
+    second = 'ReflexDefensiveAgent'
 
     # eval(first) return the class object 'first'
     # eval(first)(first_index) instantiates the 'first' class with first_index as parameter

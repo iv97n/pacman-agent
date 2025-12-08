@@ -40,6 +40,38 @@ class GetFoodGoal(Goal):
             return True
         return False
     
+class GetCapsuleGoal(Goal):
+    def __init__(self, initial_state, agent_index):
+        self.index = agent_index
+        self.capsule_positions = self.get_capsule_position(initial_state, agent_index)
+
+    def get_capsule_position(self, game_state, agent_index):
+        if game_state.is_on_red_team(agent_index):
+            capsules = game_state.get_blue_capsules()
+        else:
+            capsules = game_state.get_red_capsules()
+        
+        """
+        capsule_positions = set()
+
+        width = capsules.width
+        height = capsules.height
+
+        for x in range(width):
+            for y in range(height):
+                if capsules[x][y]:
+                    capsule_positions.add((x, y))
+        """
+        return capsules
+    
+    def goal_condition(self, game_state):
+        # Check if the agent is in a capsule position
+        if game_state.get_agent_position(self.index) in self.capsule_positions:
+            return True
+        return False
+
+
+    
 class GoBackGoal(Goal):
     def __init__(self, agent_index):
         self.index = agent_index
@@ -123,14 +155,3 @@ class PatrolGoal(Goal):
     
 
 
-"LOOK AT THIS"
-def get_agent_position(self, index):
-    """
-    Returns a location tuple if the agent with the given index is observable;
-    if the agent is unobservable, returns None.
-    """
-    agent_state = self.data.agent_states[index]
-    ret = agent_state.get_position()
-    if ret:
-        return tuple(int(x) for x in ret)
-    return ret

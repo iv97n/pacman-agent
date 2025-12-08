@@ -3,6 +3,7 @@ import heapq
 import itertools
 
 
+
 def backtrack(node, from_node):
     solution = []
 
@@ -26,7 +27,7 @@ def backtrack_actions(node, from_node, action_map):
     actions.reverse()
     return actions
 
-def a_star(game_state, agent_index, heuristic, goal):
+def a_star(game_state, agent_index, heuristic, goal, cost):
     """
     game_state: GameState instance representing the current state
     agent_index: index of the agent performing the search
@@ -42,7 +43,7 @@ def a_star(game_state, agent_index, heuristic, goal):
     heapq.heappush(frontier, (0, next(counter), game_state))
 
     # Keep the cost from the initial state to the different nodes. Shape {GameState: int}
-    cost = {game_state: 0}
+    costs = {game_state: 0}
     # Keep parents to perform backtracking once a solution is found
     from_node = {game_state: None}
     # Maps nodes to the actions that lead to it 
@@ -73,11 +74,11 @@ def a_star(game_state, agent_index, heuristic, goal):
 
             # Only evaluate the successor if it has not already been expanded
             if successor not in expanded_nodes:
-                c = cost[node] + 1
+                c = costs[node] + cost(successor, agent_index)
 
                 # Add the successor to the frontier
-                if c < cost.get(successor, float('inf')):
-                    cost[successor] = c
+                if c < costs.get(successor, float('inf')):
+                    costs[successor] = c
                     f = c + heuristic(successor, agent_index)
                     # Duplicated successors with different values are handled by the previous code
                     heapq.heappush(frontier, (f, next(counter), successor))

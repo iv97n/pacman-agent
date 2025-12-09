@@ -191,7 +191,6 @@ class CleverOffensiveAgent(BasicHeuristicAgent):
 
         # check if some agent has eaten a capsule, if so go for the food ignoring the enemies
         if len(capsules) < self.num_capsules:
-            print("hola")
             self.capsules_timer = 40
             self.num_capsules = len(capsules)
         

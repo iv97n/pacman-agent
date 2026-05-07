@@ -24,7 +24,7 @@ To run a game between the `baseline_team` and the current agent:
 ## Coding a new agent
 To create a new agent:
 1. Create a new .py file
-2. Following the structure of the `my_team.py`, create a class in the new file with the name of your agent that inherits from `CaptureAgent`, e.g. `class ReflexCaptureAgent(CaptureAgent):`
+2. Following the structure of the `my_team.py` file, create a class in the new file with the name of your agent that inherits from `CaptureAgent`, e.g. `class ReflexCaptureAgent(CaptureAgent):`
 2. In the new class, override the `def choose_action(self, game_state):` function to return the best next action (check the given source code example).
 3. (Optional) Add any other functions to the class for reasoning / learning and improving your agents decision which could also use other code sources in the same folder.
 

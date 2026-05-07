@@ -16,17 +16,16 @@ The strategies encompass multiple reflex and heuristic-search-based approaches, 
     - `pip install -e .`
 
 ## Running a game
-
+To run a game between the `baseline_team` and the current agent:
+1. `cd pacman-contest/src/contest/`
+2. `python capture.py -r baseline_team -b ../../../my_team.py`
 
 
 ## Coding a new agent
-In the root folder do the following:
-1. Create in `my_team.py` a class with the name of your agent that inherits from `CaptureAgent`, e.g. `class ReflexCaptureAgent(CaptureAgent):`
+To create a new agent:
+1. Create a new .py file
+2. Following the structure of the `my_team.py`, create a class in the new file with the name of your agent that inherits from `CaptureAgent`, e.g. `class ReflexCaptureAgent(CaptureAgent):`
 2. In the new class, override the `def choose_action(self, game_state):` function to return the best next action (check the given source code example).
 3. (Optional) Add any other functions to the class for reasoning / learning and improving your agents decision which could also use other code sources in the same folder.
-
-To debug the agent you can run `capture.py` between the `baseline_team` and your current agent:
-1. `cd pacman-contest/src/contest/`
-2. `python capture.py -r baseline_team -b ../../../my_team.py`
 
 

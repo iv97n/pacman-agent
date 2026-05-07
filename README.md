@@ -1,6 +1,8 @@
 # Pacman Agent
 
-A template for coding a pacman agent.
+This project consists of the development of multiple multi-agent approaches to coordinate two Pac-Man players in a Capture The Flag (CTF) competition.
+The strategies encompass multiple reflex and heuristic-search-based approaches, mostly divided into defensive and offensive strategies.
+
 
 ## Setting up the environment
 1. Copy or clone the code from this framework to create your Pacman Agent, e.g., `git clone git@github.com:aig-upf/pacman-agent.git`
@@ -12,6 +14,10 @@ A template for coding a pacman agent.
     - `cd pacman-contest/`
     - `pip install -r requirements.txt`
     - `pip install -e .`
+
+## Running a game
+
+
 
 ## Coding a new agent
 In the root folder do the following:
